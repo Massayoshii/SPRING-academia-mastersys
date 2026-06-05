@@ -16,5 +16,5 @@ public class Modalidade {
 
     private String nome;
 
-    private Boolean ativo = true;
+    private Boolean ativa = true;
 }

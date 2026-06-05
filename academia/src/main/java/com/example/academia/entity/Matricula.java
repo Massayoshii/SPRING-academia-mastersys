@@ -18,13 +18,15 @@ public class Matricula {
 
     @Column(name = "data_matricula")
     private LocalDate dataMatricula;
+
     @Column(name = "dia_vencimento")
     private Integer diaVencimento;
+
     @Column(name = "data_encerramento")
     private LocalDate dataEncerramento;
 
     @Enumerated(EnumType.STRING)
-    private StatusMatricula statusMatricula = StatusMatricula.ATIVA;
+    private StatusMatricula status = StatusMatricula.ATIVA;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "aluno_id")

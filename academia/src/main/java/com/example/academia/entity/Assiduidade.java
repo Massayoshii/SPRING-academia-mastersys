@@ -4,14 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "assiduidades")
-@Getter
-@Setter
+@Table(name = "assiduidade")
 public class Assiduidade {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,15 +18,17 @@ public class Assiduidade {
     private LocalDateTime dataEntrada;
 
     @Column(name = "data_saida")
-    private LocalDate dataSaida;
+    private LocalDateTime dataSaida;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "matricula_id")
     private Matricula matricula;
 
-    public void prePersist(){
-        if (dataEntrada == null){
+    @PrePersist
+    public void prePersist() {
+        if (dataEntrada == null) {
             dataEntrada = LocalDateTime.now();
         }
     }
+
 }
