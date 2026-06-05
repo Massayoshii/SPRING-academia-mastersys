@@ -73,7 +73,7 @@ CREATE TABLE faturas_matriculas(
     UNIQUE (matricula_id,data_vencimento)
 );
 
-CREATE TABLE assidduidade(
+CREATE TABLE assiduidade(
     id BIGSERIAL PRIMARY KEY ,
     matricula_id BIGINT NOT NULL REFERENCES matriculas(id),
     data_entrada TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
