@@ -26,7 +26,7 @@ public class Matricula {
     @Enumerated(EnumType.STRING)
     private StatusMatricula statusMatricula = StatusMatricula.ATIVA;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
