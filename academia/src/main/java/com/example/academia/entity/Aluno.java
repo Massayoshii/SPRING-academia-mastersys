@@ -29,6 +29,7 @@ public class Aluno {
     private String observacao;
     private String endereco;
     private String numero;
+    private String complemento;
     private String bairro;
     private String cidade;
     @Column(name = "estado" , length = 2)
