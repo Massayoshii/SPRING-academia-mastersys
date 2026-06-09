@@ -1,11 +1,13 @@
 package com.example.academia.service;
 
+import com.example.academia.dto.AlunoFiltroRequest;
 import com.example.academia.dto.AlunoRequest;
 import com.example.academia.dto.AlunoResponse;
 import com.example.academia.entity.Aluno;
 import com.example.academia.exceptions.AlunoNaoEncontradoException;
 import com.example.academia.exceptions.EmailJaCadastradoException;
 import com.example.academia.repository.AlunoRepository;
+import com.example.academia.specification.AlunoSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,8 +28,9 @@ public class AlunoService {
         return AlunoResponse.fromEntity(alunoSalvo);
     }
 
-    public Page<AlunoResponse> listar(Pageable pageable){
-        return alunoRepository.findAll(pageable).map(AlunoResponse::fromEntity);
+    public Page<AlunoResponse> listar(AlunoFiltroRequest filtro , Pageable pageable){
+        return alunoRepository.findAll(AlunoSpecification.comFiltros(filtro),
+                pageable).map(AlunoResponse::fromEntity);
     }
     public AlunoResponse buscarPorId(Long id){
         Aluno aluno = buscarEntidadePorId(id);

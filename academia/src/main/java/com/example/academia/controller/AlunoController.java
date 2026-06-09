@@ -1,5 +1,6 @@
 package com.example.academia.controller;
 
+import com.example.academia.dto.AlunoFiltroRequest;
 import com.example.academia.dto.AlunoRequest;
 import com.example.academia.dto.AlunoResponse;
 import com.example.academia.service.AlunoService;
@@ -24,8 +25,8 @@ public class AlunoController {
     }
 
     @GetMapping
-    public Page<AlunoResponse> listar(Pageable pageable){
-        return alunoService.listar(pageable);
+    public Page<AlunoResponse> listar(AlunoFiltroRequest filtro ,Pageable pageable){
+        return alunoService.listar(filtro , pageable);
     }
 
     @GetMapping("/{id}")
